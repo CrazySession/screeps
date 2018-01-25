@@ -1,3 +1,6 @@
+/*
+* Standard upgrader for controller
+* */
 var roleUpgrader = {
 
     /** @param {Creep} creep **/

@@ -1,3 +1,6 @@
+/*
+* Standard harvester for source
+* */
 var roleHarvester = {
 
     /** @param {Creep} creep **/
