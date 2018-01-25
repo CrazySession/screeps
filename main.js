@@ -38,6 +38,7 @@ module.exports.loop = function () {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvester') {
             roleHarvester.run(creep,sourceNum);
+            //Splitting creeps on different sources
             if(sourceNum == 0){
                 sourceNum = 1;
             }else{
