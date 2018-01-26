@@ -1,9 +1,10 @@
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
+var roleReagan = require('role.Reagan');
 
 module.exports.loop = function () {
-
+    console.log(Game.spawns.Spawn1.room);
     //Variables
     var sourceNum = 0;
 
@@ -22,7 +23,14 @@ module.exports.loop = function () {
 
 
     // create harvester & upgrader if the numbers are below x
-    if(upgraders.length < 6) {
+	//TODO add Energy requirement to the create if/else if
+	if(harvesters.length < 2) {			// only relevant for start so you will get 2 harvesters for your spawn and not instant upgraders
+	var newName = 'Harvester' + Game.time;
+	console.log('Spawning new harvester: ' + newName);
+	Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE,MOVE], newName,
+		{memory: {role: 'harvester',full: 'false'}});
+    }
+    else if(upgraders.length < 6) {
         var newName = 'Upgrader' + Game.time;
         console.log('Spawning new upgrader: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE,MOVE], newName,
@@ -60,6 +68,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'builder'){
             roleBuilder.run(creep);
+        }
+        if(creep.memory.role == 'reagan'){
+            roleReagan.run(creep);
         }
     }
 }
