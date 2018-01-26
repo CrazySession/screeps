@@ -7,6 +7,7 @@ module.exports.loop = function () {
     console.log(Game.spawns.Spawn1.room);
     //Variables
     var sourceNum = 0;
+    var curRoomName = Game.spawns.Spawn1.room;
 
     //Clear memory from outdated data
     for(var name in Memory.creeps) {
@@ -70,7 +71,7 @@ module.exports.loop = function () {
             roleBuilder.run(creep);
         }
         if(creep.memory.role == 'reagan'){
-            roleReagan.run(creep);
+            roleReagan.run(creep,curRoomName);
         }
     }
 }
