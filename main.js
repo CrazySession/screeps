@@ -4,10 +4,8 @@ var roleBuilder = require('role.builder');
 var roleReagan = require('role.Reagan');
 
 module.exports.loop = function () {
-    console.log(Game.spawns.Spawn1.room);
     //Variables
     var sourceNum = 0;
-    var curRoomName = Game.spawns.Spawn1.room;
 
     //Clear memory from outdated data
     for(var name in Memory.creeps) {
@@ -16,6 +14,7 @@ module.exports.loop = function () {
             console.log('Clearing non-existing creep memory:', name);
         }
     }
+    
 
     // count creeps --- depending their role
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
@@ -25,13 +24,14 @@ module.exports.loop = function () {
 
     // create harvester & upgrader if the numbers are below x
 	//TODO add Energy requirement to the create if/else if
+    //TODO balance spawn numbers ! and add Reagan into spawn routine
 	if(harvesters.length < 2) {			// only relevant for start so you will get 2 harvesters for your spawn and not instant upgraders
 	var newName = 'Harvester' + Game.time;
 	console.log('Spawning new harvester: ' + newName);
 	Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE,MOVE], newName,
 		{memory: {role: 'harvester',full: 'false'}});
     }
-    else if(upgraders.length < 6) {
+    else if(upgraders.length < 3) {
         var newName = 'Upgrader' + Game.time;
         console.log('Spawning new upgrader: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE,MOVE], newName,
@@ -45,7 +45,7 @@ module.exports.loop = function () {
             {memory: {role: 'builder',full: 'false'}});
     }
 
-    else if(harvesters.length < 5) {
+    else if(harvesters.length < 3) {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE,MOVE], newName,
@@ -71,7 +71,7 @@ module.exports.loop = function () {
             roleBuilder.run(creep);
         }
         if(creep.memory.role == 'reagan'){
-            roleReagan.run(creep,curRoomName);
+            roleReagan.run(creep);
         }
     }
 }

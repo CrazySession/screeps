@@ -5,8 +5,8 @@ scripts for screeps automation
 
 - auto create creeps (harvester/upgrader/builder)
 
-- auto source collection (harvester/upgrader/builder)
+- auto source collection (harvester/upgrader/builder/reagan)
 
 - auto build
 
-- added reagan (harvester for other rooms) #unfinished
+- added reagan (harvester for other rooms)
