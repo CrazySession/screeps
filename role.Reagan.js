@@ -27,8 +27,8 @@ var roleReagan = {
             var creepPos = creep.pos.toString();
             creepPos = creepPos.slice(1,11);
             curRoomName = curRoomName.slice(1,11);
-            console.log(creepPos);
-            console.log(curRoomName);
+            //console.log(creepPos);
+            //console.log(curRoomName);
             if(creepPos == curRoomName) {
                 exitDir = Game.map.findExit(creep.room, 'E32S15');
                 posEx = creep.pos.findClosestByRange(exitDir);
